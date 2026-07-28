@@ -1,18 +1,18 @@
 const express = require("express");
-const cors = require("cors");
 
 const app = express();
 
-// Middleware
-app.use(cors());
 app.use(express.json());
 
-// Test Route
+const authRoutes = require("./routes/authRoutes");
+
+app.use("/api/auth", authRoutes);
+
 app.get("/", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "QueueLess API is Running 🚀",
-  });
+    res.json({
+        success: true,
+        message: "QueueLess API Running 🚀"
+    });
 });
 
 module.exports = app;
